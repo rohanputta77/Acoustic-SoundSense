@@ -1003,7 +1003,7 @@ html[data-theme="light"] .banner-overview-pill { background: rgba(2, 132, 199, 0
 .train-progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--cyan-600), var(--cyan-400)); border-radius: var(--radius-full); transition: width 0.4s ease; }
 .train-progress-pct { font-size: 0.82rem; font-weight: 700; color: var(--cyan-300); font-family: var(--font-mono); min-width: 44px; text-align: right; font-variant-numeric: tabular-nums; }
 .train-chart-area { border: 1px solid var(--border); border-radius: 10px; background: rgba(4, 6, 13, 0.6); overflow: hidden; }
-.train-chart-canvas { width: 100%; height: 160px; display: block; }
+.train-chart-canvas { width: 100%; height: auto; display: block; }
 .checkpoint-section { margin-bottom: 24px; }
 .checkpoint-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
 .ckpt-card { background: var(--navy-800); border: 1px solid var(--border); border-radius: 14px; padding: 18px; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04); transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition); }
@@ -1210,7 +1210,7 @@ canvas { display: block; max-width: 100%; image-rendering: auto; }
 @supports (aspect-ratio: 1 / 1) {
   .banner-visual-showcase { aspect-ratio: 420 / 220; }
   .spec-canvas-wrap { aspect-ratio: auto; }
-  .train-chart-area { aspect-ratio: 1000 / 160; }
+  .train-chart-area { aspect-ratio: auto; }
   .analytics-chart-area { aspect-ratio: auto; }
   .player-track { aspect-ratio: 600 / 40; }
 }
