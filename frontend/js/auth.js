@@ -245,6 +245,7 @@
 
   function applyUser(u) {
     currentUser = u;
+    if (typeof renderHistoryTable === 'function') renderHistoryTable();
     if (u && u.role === 'developer') {
       setDeveloperMode(true, { name: u.name, email: u.email, role: 'developer' });
     } else {
@@ -338,6 +339,7 @@
       api('/api/history', { method: 'DELETE' }).then(function () {
         rows = []; csvBtn.disabled = true; clearBtn.disabled = true;
         body.innerHTML = '<p class="card-desc-compact">History cleared.</p>';
+        if (typeof renderHistoryTable === 'function') renderHistoryTable();
       }).catch(function (err) { toast('Could not clear history', err.message, 'error'); });
     });
   }

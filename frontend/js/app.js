@@ -177,8 +177,7 @@ async function renderHistoryTable() {
   } catch (_) {}
 
   try {
-    const authRaw = sessionStorage.getItem('soundsense_dev_auth') || localStorage.getItem('soundsense_dev_auth');
-    const token = authRaw ? JSON.parse(authRaw)?.token : null;
+    const token = localStorage.getItem('soundsense_token');
     if (token) {
       const res = await fetch('/api/history', {
         headers: { Authorization: `Bearer ${token}` }
@@ -186,15 +185,13 @@ async function renderHistoryTable() {
       if (res.ok) {
         const apiData = await res.json();
         const apiItems = Array.isArray(apiData) ? apiData : (apiData.history || apiData.items || []);
-        if (apiItems.length) {
           rows = apiItems.map(item => ({
             fileName: item.file_name || item.fileName || 'upload.wav',
-            topLabel: item.top_label || item.topLabel || item.prediction || '—',
-            confidence: item.confidence ?? 0,
+            topLabel: item.top1_label || item.top_label || item.topLabel || item.prediction || '—',
+            confidence: item.top1_conf ?? item.confidence ?? 0,
             modelName: item.model || item.modelName || '—',
             timestamp: item.created_at || item.timestamp || '',
           }));
-        }
       }
     }
   } catch (_) {}
@@ -480,6 +477,9 @@ function switchView(viewName) {
   } else if (viewName === 'training') {
     animateBenchmarkBars(false);
     loadTrainingData();
+  } else if (viewName === 'history') {
+    animateBenchmarkBars(false);
+    renderHistoryTable();
   } else if (viewName === 'analytics') {
     animateBenchmarkBars(false);
     loadAnalyticsData();
@@ -2007,6 +2007,7 @@ async function executeClassification() {
     }
 
     displayClassificationResults(predictions, modelKey);
+    if (inferenceSource === 'api') renderHistoryTable();
     if (serverLatency != null && statLatencyEl) statLatencyEl.textContent = `${Number(serverLatency).toFixed(1)} ms`;
     setStatus('Engine Ready', 'ready');
 
