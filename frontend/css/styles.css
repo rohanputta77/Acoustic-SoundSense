@@ -595,7 +595,7 @@ html.fx-on .banner-img-frame { will-change: transform; }
 .feat-tab-btn.active { color: var(--cyan-300); background: rgba(34, 211, 238, 0.1); border-color: rgba(34, 211, 238, 0.4); box-shadow: 0 0 12px -4px rgba(34, 211, 238, 0.3); }
 .spec-canvas-wrap { width: 100%; position: relative; border-radius: 10px; overflow: hidden; border: 1px solid rgba(34, 211, 238, 0.16); background: #04060d; transition: border-color var(--transition), box-shadow var(--transition); }
 .spec-canvas-wrap:hover { border-color: rgba(34, 211, 238, 0.4); box-shadow: 0 0 22px -8px rgba(34, 211, 238, 0.5); }
-.spectrogram-canvas { width: 100%; height: 140px; display: block; cursor: crosshair; }
+.spectrogram-canvas { width: 100%; height: auto; display: block; cursor: crosshair; }
 .spec-legend-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding-top: 4px; }
 .legend-scale { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .leg-lbl { font-size: 0.66rem; color: var(--text-dim); font-weight: 600; }
@@ -1208,7 +1208,7 @@ html { scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.16) transparen
 canvas { display: block; max-width: 100%; image-rendering: auto; }
 @supports (aspect-ratio: 1 / 1) {
   .banner-visual-showcase { aspect-ratio: 420 / 220; }
-  .spec-canvas-wrap { aspect-ratio: 1000 / 140; }
+  .spec-canvas-wrap { aspect-ratio: auto; }
   .train-chart-area { aspect-ratio: 1000 / 160; }
   .analytics-chart-area { aspect-ratio: auto; }
   .player-track { aspect-ratio: 600 / 40; }
