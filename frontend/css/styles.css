@@ -1018,10 +1018,11 @@ html[data-theme="light"] .banner-overview-pill { background: rgba(2, 132, 199, 0
 .ckpt-meta { display: flex; gap: 12px; flex-wrap: wrap; }
 .ckpt-meta-item { font-size: 0.68rem; color: var(--text-dim); }
 .ckpt-meta-item strong { color: var(--cyan-300); }
-.analytics-health-banner { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; padding: 22px 26px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); margin-bottom: 24px; position: relative; overflow: hidden; box-shadow: var(--elev-1); }
-.health-stat { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.analytics-health-banner { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 20px 24px; padding: 22px 26px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); margin-bottom: 24px; position: relative; overflow: hidden; box-shadow: var(--elev-1); }
+.health-stat { display: flex; align-items: flex-start; gap: 10px; min-width: 0; }
+.health-stat > div { min-width: 0; flex: 1; }
 .health-icon { font-size: 1.1rem; flex-shrink: 0; }
-.health-val { display: block; font-family: var(--font-display); font-size: 1.12rem; font-weight: 700; color: var(--text-main); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.health-val { display: block; font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--text-main); font-variant-numeric: tabular-nums; white-space: normal; overflow-wrap: anywhere; line-height: 1.5; margin-bottom: 4px; }
 .health-lbl { display: block; font-size: 0.62rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-dim); }
 .analytics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
 .analytics-card { min-width: 0; min-height: 280px; }
