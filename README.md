@@ -77,9 +77,12 @@ $env:PYTHONPATH = "$PWD/backend/src"
 docker compose up --build
 ```
 
-The container mounts local data and weights; they are not baked into the image.
-Render's configuration provides the application container only; configure persistent
-storage and supply model artifacts and secrets separately before using it publicly.
+The container does not include local datasets or trained weights. The Render
+Blueprint uses the free web service plan and generates `SOUNDSENSE_SECRET`, but does
+not attach persistent storage. Account data, uploads, and runtime files can be lost
+when the service restarts or redeploys. Free-tier resource limits may also affect
+model inference. Add required model files and datasets separately before using
+inference.
 Use one application worker: training progress and counters are process-local.
 
 ## Before uploading to GitHub

@@ -2,7 +2,9 @@ services:
   - type: web
     name: soundsense
     env: docker
+    plan: free
     dockerfilePath: ./deployment/Dockerfile
+    healthCheckPath: /api/health
     envVars:
       - key: HOST
         value: 0.0.0.0
@@ -10,3 +12,5 @@ services:
         value: 10000
       - key: RELOAD
         value: "false"
+      - key: SOUNDSENSE_SECRET
+        generateValue: true
