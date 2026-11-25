@@ -5121,6 +5121,12 @@ if (btnQuickLogin) {
 
   // Turn whatever the backend returns into [{label, conf}] (conf in percent, 0-100)
   function normalise(data) {
+    function classLabel(value) {
+      if (value && typeof value === 'object') {
+        value = value.name || value.label || value.className;
+      }
+      return typeof value === 'string' ? value.replace(/_/g, ' ') : null;
+    }
     var arr = null;
     ['top5', 'top_5', 'topK', 'top_k', 'predictions', 'results', 'ranked', 'probabilities'].some(function (k) {
       if (data && Array.isArray(data[k])) { arr = data[k]; return true; }
@@ -5132,8 +5138,8 @@ if (btnQuickLogin) {
     }
     if (!arr) return null;
     var out = arr.map(function (p) {
-      if (Array.isArray(p)) return { label: p[0], conf: Number(p[1]) };
-      var label = p.label || p.category || p.class || p.name || p.className;
+      if (Array.isArray(p)) return { label: classLabel(p[0]), conf: Number(p[1]) };
+      var label = classLabel(p.label || p.category || p.class || p.name || p.className);
       var c = p.confidence != null ? p.confidence : (p.probability != null ? p.probability : (p.score != null ? p.score : p.prob));
       return { label: label, conf: Number(c) };
     }).filter(function (p) { return p.label != null && !isNaN(p.conf); });
