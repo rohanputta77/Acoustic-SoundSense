@@ -5466,6 +5466,10 @@ if (btnQuickLogin) {
   if (lensBtnDev) lensBtnDev.addEventListener('click', () => setLens('dev'));
 
   // Hero Quick Navigation Buttons
+  const heroOverviewBtn = document.getElementById('hero-overview-btn');
+  if (heroOverviewBtn) {
+    heroOverviewBtn.addEventListener('click', () => switchView('overview'));
+  }
   const heroGotoStudioBtn = document.getElementById('hero-goto-studio-btn');
   if (heroGotoStudioBtn) {
     heroGotoStudioBtn.addEventListener('click', () => switchView('studio'));
@@ -5478,7 +5482,10 @@ if (btnQuickLogin) {
 
   const heroBatchPredictionBtn = document.getElementById('hero-batch-prediction-btn');
   if (heroBatchPredictionBtn) {
-    heroBatchPredictionBtn.addEventListener('click', () => switchView('batch-prediction'));
+    heroBatchPredictionBtn.addEventListener('click', () => {
+      switchView('studio');
+      requestAnimationFrame(() => document.getElementById('batch-card')?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+    });
   }
 
   const overviewGotoStudioBtn = document.getElementById('overview-goto-studio-btn');
