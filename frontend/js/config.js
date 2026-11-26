@@ -4,7 +4,7 @@
  * Vercel), set this to the backend's stable HTTPS origin, with no trailing slash.
  * Example: window.SOUNDSENSE_API_BASE = 'https://api.example.com';
  */
-window.SOUNDSENSE_API_BASE = window.SOUNDSENSE_API_BASE || ' https://videos-sticky-entries-asking.trycloudflare.com';
+window.SOUNDSENSE_API_BASE = window.SOUNDSENSE_API_BASE || ' https://highlight-side-characteristic-wider.trycloudflare.com';
 
 (function configureBackendRequests() {
   var base = String(window.SOUNDSENSE_API_BASE || '').replace(/\/+$/, '');
